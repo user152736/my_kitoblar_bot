@@ -2,7 +2,7 @@ from aiogram.filters import Command
 from aiogram.types import Message
 from aiogram import Router, html
 from aiogram.fsm.context import FSMContext
-from sqlalchemy.util import await_only
+from sqlalchemy import func
 
 from state.search_state import SearchState
 from database.database_connection import Books, session
@@ -20,9 +20,9 @@ async def command_start_handler(message: Message, state:FSMContext):
 async def javob_state(message: Message):
     search_key = message.text
 
-    results = session.query(Books).filter((Books.sarlavha == search_key) |
-                                          (Books.muallif == search_key) |
-                                          (Books.janra == search_key)).order_by(Books.id).all()
+    results = session.query(Books).filter((func.lower(Books.sarlavha) == func.lower(search_key)) |
+                                          (func.lower(Books.muallif) == func.lower(search_key)) |
+                                          (func.lower(Books.janra) == func.lower(search_key))).order_by(Books.id).all()
 
     itl = html.italic
     bl = html.bold
