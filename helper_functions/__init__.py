@@ -1,0 +1,1 @@
+from .command_menu import menu_func
