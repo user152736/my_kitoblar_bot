@@ -51,8 +51,7 @@ async def muallif_state(message: Message, state:FSMContext):
         await message.answer('kitob malumotlari saqlandi', reply_markup=None)
     elif message.text == 'YO`Q 🔴':
         await message.answer('iltimos unda kitob malumotlarini qayta kiriting 👉 /add_book', reply_markup=None)
-    else:
-        await message.answer('iltimos tugmalardan foydalaning')
+
 
 
 
