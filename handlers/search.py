@@ -11,7 +11,7 @@ search_router = Router()
 
 
 @search_router.message(Command('search'))
-async def command_start_handler(message: Message, state:FSMContext):
+async def search_handler(message: Message, state:FSMContext):
     await message.answer('qidirayotgan kitobingizning nomi, muallifi, yoki janrini kiriting')
     await state.set_state(SearchState.javob)
 
